@@ -14,13 +14,13 @@
 
 <body>
     <nav class="navbar navbar-expand-md sticky-top shadow-sm py-3" style="font-family: Archivo, sans-serif;background: rgba(255,255,255,0.75);position: fixed;min-width: 100%;backdrop-filter: blur(10px);border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="#"><img class="img-fluid" src="{% static 'img/logo.png' %}" width="20px" height="20px"><span class="fs-6" style="padding: 0px 10px;">Paul Balita Realty Services</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2" style="border-width: 0px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><img class="img-fluid" src="{% static 'img/logo.png' %}" width="20px" height="20px"><span class="fs-6" style="padding: 0px 10px;">Paul Balita Realty Services</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2" style="border-width: 0px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
                     <li class="nav-item"></li>
-                </ul><a class="btn btn-primary shadow ms-md-2" role="button" href="#" style="border-radius: 40px;">See Listings</a>
+                </ul><a class="btn btn-primary shadow ms-md-2" role="button" href="listings" style="border-radius: 40px;">See Listings</a>
             </div>
         </div>
     </nav>
@@ -31,7 +31,10 @@
                     <div style="color: var(--bs-body-bg);">
                         <h2 class="text-uppercase fw-bold mb-3" style="padding-top: 100px;text-shadow: 0px 2px 10px rgb(64,64,64);">your dream home awaits</h2>
                         <p class="mb-4" style="text-shadow: 0px 2px 10px rgb(64,64,64);"><br><span style="background-color: rgba(255, 255, 255, 0);">Discover the perfect place to call home with our expert realty services. From cozy apartments to luxurious estates, we’ll help you find a property that suits your lifestyle and budget. Let’s turn your home ownership dreams into reality.</span><br><br></p>
-                        <div class="d-md-flex justify-content-md-center align-items-md-center" style="padding: 10px;font-family: Archivo, sans-serif;padding-bottom: 50px;padding-top: 50px;"><input class="shadow d-inline" type="search" placeholder="Property name, location, etc..." style="border-radius: 30px;border-width: 0px;max-width: 100%;width: 75%;height: 40px;border-bottom-right-radius: 0px;border-top-right-radius: 0px;padding: 1px 16px;"><button class="btn btn-primary shadow" type="button" style="border-top-right-radius: 30px;border-top-left-radius: 0px;border-bottom-right-radius: 30px;border-bottom-left-radius: 0px;height: 40px;">Search</button></div>
+                        <form action="{% url 'listings' %}" class="d-md-flex justify-content-md-center align-items-md-center" style="padding: 10px;font-family: Archivo, sans-serif;padding-bottom: 50px;padding-top: 50px;" method="get">  <input class="shadow d-inline" type="search" name="query" placeholder="Property name, location, etc..." 
+                            style="border-radius: 30px;border-width: 0px;max-width: 100%;width: 75%;height: 40px;border-bottom-right-radius: 0px;border-top-right-radius: 0px;padding: 1px 16px;"
+                            onkeydown="if (event.keyCode === 13) { event.preventDefault(); this.form.submit(); }">  <button class="btn btn-primary shadow" type="submit" style="border-top-right-radius: 30px;border-top-left-radius: 0px;border-bottom-right-radius: 30px;border-bottom-left-radius: 0px;height: 40px;">Search</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -77,14 +80,16 @@
     <footer class="text-center bg-dark">
         <div class="container text-white py-4 py-lg-5">
             <ul class="list-inline" style="font-family: Archivo, sans-serif;">
-                <li class="list-inline-item me-4"><a class="link-light" href="#">Home</a></li>
+                <li class="list-inline-item me-4"><a class="link-light" href="/">Home</a></li>
                 <li class="list-inline-item me-4"><a class="link-light" href="#">About Us</a></li>
-                <li class="list-inline-item"><a class="link-light" href="#">See Listings</a></li>
+                <li class="list-inline-item"><a class="link-light" href="/listings">See Listings</a></li>
             </ul>
             <ul class="list-inline">
                 <li class="list-inline-item me-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook text-light">
                         <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
-                    </svg></li>
+                    </svg>
+                    www.facebook.com/pbrs</li>
+                </li>
                 <li class="list-inline-item">paulbalitarealtyservices@gmail.com</li>
             </ul>
             <p class="mb-0" style="font-family: Archivo, sans-serif;">Copyright © 2024 Brand</p>
