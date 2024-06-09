@@ -8,7 +8,6 @@ def index(request):
     return render(request, 'index.html')
 
 def listings(request):
-    query = request.GET.get('query', '')
     min_price = request.GET.get('min_price', '')
     max_price = request.GET.get('max_price', '')
     min_lot_area = request.GET.get('min_lot_area', '')
@@ -16,12 +15,12 @@ def listings(request):
     city = request.GET.get('city', '')
     property_type = request.GET.get('property_type', '')
     
-    q_objects = Q(house_name__icontains=query) | Q(contact_agent__icontains=query) | Q(type_of_house__icontains=query)
+    q_objects = Q()
     
     if min_price:
-        q_objects.add(Q(price__gte=min_price), Q.AND)
+        q_objects.add(Q(total_contract_price__gte=min_price), Q.AND)
     if max_price:
-        q_objects.add(Q(price__lte=max_price), Q.AND)
+        q_objects.add(Q(total_contract_price__lte=max_price), Q.AND)
     if min_lot_area:
         q_objects.add(Q(lot_area__gte=min_lot_area), Q.AND)
     if max_lot_area:
@@ -31,7 +30,7 @@ def listings(request):
     if property_type:
         q_objects.add(Q(property_type__icontains=property_type), Q.AND)
     
-    if query or min_price or max_price or min_lot_area or max_lot_area or city or property_type:
+    if min_price or max_price or min_lot_area or max_lot_area or city or property_type:
         house_listings = HouseListing.objects.filter(q_objects).distinct()
     else:
         house_listings = HouseListing.objects.all()
