@@ -39,10 +39,10 @@
     </section>
     <div class="container py-4 py-xl-5">
         <div class="row mb-5">
-            <div class="col d-flex flex-column justify-content-lg-center">
+            <div class="col">
                 <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Search for a Property</p>
                 <form action="{% url 'listings' %}" method="get">
-                <input type="search" name="query" placeholder="Property name" 
+                <input type="search" name="query" placeholder="Property name, agent name, type..." 
                         style="border-radius: 30px;padding: 1px 15px;border: 1px solid rgb(210,210,210) ;"
                         onkeydown="if (event.keyCode === 13) { this.form.submit(); }">
                 </form>
@@ -50,14 +50,53 @@
             <div class="col">
                 <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Location</p>
                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">All</button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Type</a><a class="dropdown-item" href="#">2nd Type</a><a class="dropdown-item" href="#">3rd Type</a></div>
+                    <div class="dropdown-menu">
+                        {% for city in house_listing.type_of_house %}
+                            <form action="{% url 'listings' %}" method="get" style="display:inline;">
+                                <input type="hidden" name="query" value="{{ city }}">
+                                <button type="submit" class="dropdown-item" style="border:none; background:none; padding:0; margin:0; cursor:pointer;">
+                                    {{ city }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
             <div class="col">
                 <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Property Type</p>
                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">All</button>
-                    <div class="dropdown-menu"><a class="dropdown-item" href="#">Type</a><a class="dropdown-item" href="#">2nd Type</a><a class="dropdown-item" href="#">3rd Type</a></div>
+                    <div class="dropdown-menu">
+                        {% for type in house_listing.type_of_house %}
+                            <form action="{% url 'listings' %}" method="get" style="display:inline;">
+                                <input type="hidden" name="query" value="{{ type }}">
+                                <button type="submit" class="dropdown-item" style="border:none; background:none; padding:0; margin:0; cursor:pointer;">
+                                    {{ type }}
+                                </button>
+                            </form>
+                        {% endfor %}
+                    </div>
                 </div>
+            </div>
+            <div class="col">
+                <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Price</p>
+                <input class="form-range" type="range" name="Price" step="1" min="{{ min_price }}" max="{{ max_price }}" value="{{ min_price }}">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Min: ${{ min_price }}</span>
+                    <span>Max: ${{ max_price }}</span>
+                </div>
+            </div>
+            <div class="col">
+                <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Lot Area</p>
+                <input class="form-range" type="range" name="lot_area" step="1" min="{{ min_lot_area }}" max="{{ max_lot_area }}" value="{{ min_lot_area }}">
+                <div style="display: flex; justify-content: space-between;">
+                    <span>Min: {{ min_lot_area }} sq ft</span>
+                    <span>Max: {{ max_lot_area }} sq ft</span>
+                </div>
+            </div>
+            <div class="col">
+                <form action="{% url 'listings' %}" method="get">
+                    <button type="submit" class="btn btn-secondary" style="border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);margin-top: 20px;">Reset Filters</button>
+                </form>
             </div>
         </div>
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
