@@ -132,7 +132,7 @@
         <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
             {% for house_listing in house_listings %}
                 <div class="col">
-                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ house_listing.house_images.url }}">
+                    <div class="card"><img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ house_listing.imagemodel_set.first.image.url }}">
                         <div class="card-body p-4">
                             <p class="text-primary card-text mb-0" style="color: rgb(106,160,37);">₱{{house_listing.total_contract_price}}</p>
                             <h4 class="card-title">{{house_listing.house_name}}</h4>
