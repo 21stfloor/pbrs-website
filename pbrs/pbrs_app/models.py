@@ -10,6 +10,7 @@ class HouseListing(models.Model):
     lot_area = models.DecimalField(max_digits=10, decimal_places=2)
     location_coordinates = models.CharField(max_length=100)
     contact_agent = models.CharField(max_length=100)
+    agent_phone_number = models.CharField(max_length=20)
     
     def __str__(self):
         return self.house_name
