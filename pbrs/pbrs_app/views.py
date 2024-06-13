@@ -54,3 +54,6 @@ def listings(request):
         'selected_city': city,
         'selected_type': property_type,
     })
+
+def about(request):
+    return render(request, 'about.html')
