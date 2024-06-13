@@ -16,3 +16,6 @@ def listings(request):
     else:
         house_listings = HouseListing.objects.all()
     return render(request, 'listings.html', {'house_listings': house_listings})
+
+def about(request):
+    return render(request, 'about.html')
