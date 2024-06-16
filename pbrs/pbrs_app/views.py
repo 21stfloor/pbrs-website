@@ -57,3 +57,9 @@ def listings(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def listing_detail(request, listing_id):
+    house_listing = HouseListing.objects.get(pk=listing_id)
+    return render(request, 'listing_detail.html', {
+        'house_listing': house_listing,
+    })
