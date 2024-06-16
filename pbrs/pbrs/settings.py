@@ -94,10 +94,10 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': '',
+            'NAME': 'pbrs$default',
             'USER': 'pbrs',
-            'PASSWORD': '$',
-            'HOST': '',
+            'PASSWORD': 'databasePBRSPassword_paulbalita',
+            'HOST': 'pbrs.mysql.pythonanywhere-services.com',
             'PORT': '3306',
             'OPTIONS': {
                     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
