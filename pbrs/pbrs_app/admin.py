@@ -1,5 +1,6 @@
 from django.contrib import admin
 from .models import HouseListing, ImageModel
+from django.contrib.auth.models import Group
 
 # Register your models here.
 class ImageModelInline(admin.TabularInline):
@@ -14,3 +15,4 @@ class HouseListingAdmin(admin.ModelAdmin):
     inlines = [ImageModelInline]
     
 admin.site.register(HouseListing, HouseListingAdmin)
+admin.site.unregister((Group,))
