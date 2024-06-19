@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans&amp;display=swap">
     <link rel="stylesheet" href="{% static 'css/styles.min.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 </head>
 
 <body>
@@ -25,10 +26,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navcol-2">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
                 </ul>
-                <a class="btn btn-primary shadow ms-md-2" role="button" href="#" style="border-radius: 40px;">See Listings</a>
+                <a class="btn btn-primary shadow ms-md-2" role="button" href="/listings" style="border-radius: 40px;">See Listings</a>
             </div>
         </div>
     </nav>
@@ -37,7 +38,9 @@
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     {% for image in house_listing.imagemodel_set.all %}
-                        <div class="swiper-slide" style="background: url('{{ image.image.url }}') center center / cover no-repeat;"></div>
+                        <div class="swiper-slide">
+                            <img src="{{ image.image.url }}" style="width: 100%;height: 100%;object-fit:cover;">
+                        </div>
                     {% endfor %}
                 </div>
                 <div class="swiper-pagination"></div>
@@ -78,6 +81,7 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="{% static 'js/script.min.js' %}"></script>
     <script>
         document.getElementById('copy-link-btn').addEventListener('click', function() {
