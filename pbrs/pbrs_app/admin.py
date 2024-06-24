@@ -14,5 +14,7 @@ class HouseListingAdmin(admin.ModelAdmin):
     list_filter = ['city', 'property_type']
     inlines = [ImageModelInline]
     
+admin.site.site_header = 'PBRS Administration' 
+admin.site.index_title = 'Features Area'
 admin.site.register(HouseListing, HouseListingAdmin)
-admin.site.unregister((Group,))
+admin.site.unregister((Group, ))
