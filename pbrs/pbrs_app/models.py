@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 class HouseListing(models.Model):
     house_name = models.CharField(max_length=100)
+    description = models.TextField(null=True, default="")
     total_contract_price = models.DecimalField(max_digits=10, decimal_places=2)
     property_type = models.CharField(max_length=100)
     address = models.CharField(max_length=100)

@@ -105,8 +105,8 @@
                     <input class="form-range" type="range" name="max_price" id="priceRange" step="1" min="{{ min_price }}" max="{{ max_price }}" value="{{ request.GET.max_price|default:max_price }}" oninput="document.getElementById('currentPrice').textContent = 'Current: ₱' + this.value">
                     <div style="display: flex; justify-content: space-between;">
                         <span>Min: ₱{{ min_price }}</span>
-                        <span>Max: ₱{{ max_price }}</span>
                         <span id="currentPrice">Current: ₱{{ request.GET.max_price|default:max_price }}</span>
+                        <span>Max: ₱{{ max_price }}</span>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Apply Filter</button>
                 </form>
@@ -117,8 +117,8 @@
                     <input class="form-range" type="range" name="max_lot_area" id="lotAreaRange" step="1" min="{{ min_lot_area }}" max="{{ max_lot_area }}" value="{{ request.GET.max_lot_area|default:max_lot_area }}" oninput="document.getElementById('currentLotArea').textContent = 'Current: ' + this.value + ' sq ft'">
                     <div style="display: flex; justify-content: space-between;">
                         <span>Min: {{ min_lot_area }} sq ft</span>
-                        <span>Max: {{ max_lot_area }} sq ft</span>
                         <span id="currentLotArea">Current: {{ request.GET.max_lot_area|default:max_lot_area }} sq ft</span>
+                        <span>Max: {{ max_lot_area }} sq ft</span>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Apply Filter</button>
                 </form>
