@@ -27,7 +27,11 @@ SECRET_KEY = 'django-insecure-glql14cj9=i1w_4ch=)93m!9^+(dx_y$td^accmlx!@&ni9*m7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'pbrs.pythonanywhere.com',
+    'www.pbrs-marketing.com',
+    '127.0.0.1'
+]
 
 
 # Application definition
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pbrs_app',
+    'django.contrib.humanize'
 ]
 
 MIDDLEWARE = [
