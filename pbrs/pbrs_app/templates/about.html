@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>PBRS</title>
+    <title>PBRS - About Us</title>
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
@@ -14,25 +14,24 @@
 </head>
 
 <body style="background: var(--bs-gray-100);">
-    <nav class="navbar navbar-expand-md sticky-top shadow-sm py-3" style="font-family: Archivo, sans-serif;background: rgba(255,255,255,0.75);position: fixed;min-width: 100%;backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><img class="img-fluid" src="{% static 'img/logo.png' %}" width="20px" height="20px"><span class="fs-6" style="padding: 0px 10px;">Paul Balita Realty Services</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2" style="border-width: 0px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-2">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-                    <li class="nav-item"></li>
-                </ul><a class="btn btn-primary shadow ms-md-2" role="button" href="/listings" style="border-radius: 40px;">See Listings</a>
-            </div>
-        </div>
-    </nav>
+    {% include 'navbar.html' %}
     <div style="background: url('{% static 'img/pexels-pixabay-280222.jpg' %}') center / cover;font-family: Archivo, sans-serif;">
-        <section class="py-4 py-xl-5" style="backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);color: #ffffff;">
+        <section class="py-4 py-xl-5" style="backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);color: #ffffff;">
             <div class="container h-100">
-                <div class="row h-100" style="margin-top: 200px;">
+                <div class="row h-100" style="margin-top: 100px;">
                     <div class="col-md-10 col-xl-8 text-center d-flex d-sm-flex d-md-flex justify-content-center align-items-center mx-auto justify-content-md-start align-items-md-center justify-content-xl-center">
                         <div>
-                            <h2 class="text-uppercase fw-bold mb-3" style="text-shadow: 0px 4px 7px rgb(0,0,0);">Biben dum<br>fringi dictum, augue purus</h2>
-                            <p class="mb-4" style="text-shadow: 0px 3px 3px rgb(0,0,0);">Etiam a rutrum, mauris lectus aptent convallis. Fusce vulputate aliquam, sagittis odio metus. Nulla porttitor vivamus viverra laoreet, aliquam netus.</p>
+                            <p class="mb-4 fs-2 fw-normal text-start" style="text-shadow: 0px 3px 3px rgb(0,0,0);">
+                                "YOUR DATE IN REAL ESTATE"<br>
+                                <br>
+                                PBRS Property is by CHOICE,<br>
+                                not by CHANCE.<br>
+                                <br>
+                                Positive<br>
+                                Best<br>
+                                Real<br>
+                                Sure
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -41,9 +40,14 @@
     </div>
     <div style="font-family: Archivo, sans-serif;">
         <div class="row" style="background: linear-gradient(var(--bs-primary-bg-subtle), white);">
-            <div class="col d-flex d-sm-flex d-md-flex d-lg-flex flex-column justify-content-center align-items-center justify-content-sm-center align-items-sm-center justify-content-md-center align-items-lg-center" style="padding: 100px 12px;"><img class="img-fluid d-flex d-sm-flex d-md-flex d-lg-flex d-xl-flex d-xxl-flex justify-content-center align-items-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center justify-content-xl-center align-items-xl-center justify-content-xxl-center align-items-xxl-center" src="{% static 'img/paul-balita-transparent.png' %}" width="300px">
-                <h1 style="margin: 8px;">Paul Balita</h1>
-                <p>Licensed Broker</p>
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0">
+                        <img class="d-lg-flex justify-content-lg-center align-items-lg-center mb-3 fit-cover" src="{% static 'img/paul-balita-transparent.png' %}" width="200">
+                        <h5 class="fw-bold text-primary card-title mb-0"><strong>Paul Balita</strong></h5>
+                        <p class="text-muted card-text mb-2">Owner 0034154</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -53,7 +57,17 @@
                 <h2>Our Team</h2>
             </div>
         </div>
-        <div class="row gy-4 row-cols-2 row-cols-md-3">
+        <div class="row bg-white">
+            <div class="col">
+                <div class="card border-0 shadow-none">
+                    <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="d-lg-flex justify-content-lg-center align-items-lg-center mb-3 fit-cover" src="{% static 'img/roselyn-cortez-transparent.png' %}" width="130">
+                        <h5 class="fw-bold text-primary card-title mb-0"><strong>Roselyn Cortez</strong></h5>
+                        <p class="text-muted card-text mb-2">Marketing Coordinator</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row bg-white">
             <div class="col">
                 <div class="card border-0 shadow-none">
                     <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="d-lg-flex justify-content-lg-center align-items-lg-center mb-3 fit-cover" src="{% static 'img/geraldine-siervo-transparent.png' %}" width="130">
@@ -62,14 +76,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card border-0 shadow-none">
-                    <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="d-lg-flex justify-content-lg-center align-items-lg-center mb-3 fit-cover" src="{% static 'img/roselyn-cortez-transparent.png' %}" width="130">
-                        <h5 class="fw-bold text-primary card-title mb-0"><strong>Roselyn Cortez</strong></h5>
-                        <p class="text-muted card-text mb-2">Office Staff / Coordinator</p>
-                    </div>
-                </div>
-            </div>
+            <div class="col"></div>
+            
             <div class="col">
                 <div class="card border-0 shadow-none">
                     <div class="card-body text-center d-flex flex-column align-items-center p-0"><img class="d-lg-flex justify-content-lg-center align-items-lg-center mb-3 fit-cover" src="{% static 'img/prescila-catangui-transparent.png' %}" width="130">
@@ -82,13 +90,18 @@
     </div>
     <div class="container py-4 py-xl-5" style="font-family: Archivo, sans-serif;">
         <div class="row gy-4 gy-md-0">
-            <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
-                <div style="max-width: 350px;">
+            <div class="col-md-8 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+                <div>
                     <h2 class="text-uppercase fw-bold">Our Vision</h2>
-                    <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                    <p class="mb-4 fs-4 fw-normal text-start" >
+                        <span class="fw-bolder fs-1">P</span> roviding opportunity and<br>
+                        <span class="fw-bolder fs-1">B</span> uilding community in<br>
+                        <span class="fw-bolder fs-1">R</span> eal estate industry, by<br>
+                        <span class="fw-bolder fs-1">S</span> erving my purpose with integrity<br>
+                    </p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="p-xl-5 m-xl-5"><img class="rounded img-fluid w-100 fit-cover" src="{% static 'img/pexels-binyaminmellish-106399.jpg' %}"></div>
             </div>
         </div>
@@ -101,29 +114,14 @@
             <div class="col-md-6 d-md-flex align-items-md-center">
                 <div style="max-width: 350px;">
                     <h2 class="text-uppercase fw-bold">Our Mission</h2>
-                    <p class="my-3">Tincidunt laoreet leo, adipiscing taciti tempor. Primis senectus sapien, risus donec ad fusce augue interdum.</p>
+                    <p class="my-3 fs-4">To be sought out as a qualified and trusted company in real estate industry and in the service of the humanity.</p>
                 </div>
             </div>
         </div>
     </div>
-    <footer class="text-center bg-dark">
-        <div class="container text-white py-4 py-lg-5">
-            <ul class="list-inline" style="font-family: Archivo, sans-serif;">
-                <li class="list-inline-item me-4"><a class="link-light" href="/">Home</a></li>
-                <li class="list-inline-item me-4"><a class="link-light" href="/about">About Us</a></li>
-                <li class="list-inline-item"><a class="link-light" href="/listings">See Listings</a></li>
-            </ul>
-            <ul class="list-inline">
-                <li class="list-inline-item me-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook text-light">
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
-                </svg>
-                    www.facebook.com/pbrs</li>
-                </li>
-                <li class="list-inline-item">paulbalitarealtyservices@gmail.com</li>
-            </ul>
-            <p class="mb-0" style="font-family: Archivo, sans-serif;">Copyright © 2024 PBRS</p>
-        </div>
-    </footer>
+    {% include 'footer.html' %}
+    {% include 'modals.html' %}
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

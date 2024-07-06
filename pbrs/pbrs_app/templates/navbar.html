@@ -1,0 +1,66 @@
+{% load static %}
+<nav class="navbar navbar-expand-md sticky-top shadow-sm py-3"
+            style="font-family: Archivo, sans-serif;background: rgba(255,255,255,0.75);position: fixed;min-width: 100%;backdrop-filter: blur(10px);border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;">
+            <div class="container"><a
+                    class="navbar-brand d-flex align-items-center" href="/"><img
+                        class="img-fluid" src="{% static 'img/logo.png' %}"
+                        width="48px" height="48px"><span class="fs-6"
+                        style="padding: 0px 10px;">Paul Balita Realty
+                        Services</span></a><button data-bs-toggle="collapse"
+                    class="navbar-toggler" data-bs-target="#navcol-2"
+                    style="border-width: 0px;"><span
+                        class="visually-hidden">Toggle navigation</span><span
+                        class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navcol-2">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active"
+                                href="{% url 'index' %}">Home</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#"
+                                id="careersDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Careers
+                            </a>
+                            <ul class="dropdown-menu"
+                                aria-labelledby="careersDropdown">
+                                <li><a class="dropdown-item"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#becomeAgentModal">Sales
+                                        Manager</a></li>
+                                <li><a class="dropdown-item"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#becomeAgentModal">Salesperson</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#"
+                                id="requirementsDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Requirements
+                            </a>
+                            <ul class="dropdown-menu"
+                                aria-labelledby="requirementsDropdown">
+                                <li><a class="dropdown-item"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#basicRequirementsModal">Basic Requirements</a></li>
+                                <li><a class="dropdown-item"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#localEmployedModal">Locally Employed</a></li>
+                                <li><a class="dropdown-item"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#ofwModal">OFW</a></li>
+                                <li><a class="dropdown-item"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#selfEmployedModal">Self Employed</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link"
+                                href="{% url 'about' %}">About Us</a></li>
+                        <li class="nav-item"></li>
+                    </ul><a class="btn btn-primary shadow ms-md-2" role="button"
+                        href="{% url 'listings' %}" style="border-radius: 40px;">See
+                        Listings</a>
+                </div>
+            </div>
+        </nav>

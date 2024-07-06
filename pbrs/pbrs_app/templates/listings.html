@@ -1,11 +1,12 @@
 {% load static %}
+{% load humanize %}
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Listings</title>
+    <title>PBRS - Listings</title>
     <link rel="icon" href="{% static 'img/logo.png' %}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo&amp;display=swap">
@@ -14,17 +15,7 @@
 </head>
 
 <body style="border-style: solid;font-family: Archivo, sans-serif;">
-    <nav class="navbar navbar-expand-md sticky-top shadow-sm py-3" style="font-family: Archivo, sans-serif;background: rgba(255,255,255,0.75);position: fixed;min-width: 100%;backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);border-bottom-right-radius: 40px;border-bottom-left-radius: 40px;">
-        <div class="container"><a class="navbar-brand d-flex align-items-center" href="/"><img class="img-fluid" src="{% static 'img/logo.png' %}" width="20px" height="20px"><span class="fs-6" style="padding: 0px 10px;">Paul Balita Realty Services</span></a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-2" style="border-width: 0px;"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navcol-2">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
-                    <li class="nav-item"></li>
-                </ul><a class="btn btn-primary shadow ms-md-2" role="button" href="/listings" style="border-radius: 40px;">See Listings</a>
-            </div>
-        </div>
-    </nav>
+    {% include 'navbar.html' %}
     <section class="py-4 py-xl-5" style="background: url('{% static 'img/pexels-binyaminmellish-106399.jpg' %}') center / cover no-repeat;color: #fff;filter: blur(0px);font-family: Archivo, sans-serif;">
         <div class="container h-100" style="padding-top: 70px;filter: blur(0px);backdrop-filter: blur(0px);-webkit-backdrop-filter: blur(0px);">
             <div class="row h-100">
@@ -46,67 +37,39 @@
                         style="border-radius: 30px;padding: 1px 15px;border: 1px solid rgb(210,210,210) ;"
                         onkeydown="if (event.keyCode === 13) { this.form.submit(); }">
                 </form>
-            </div>
-            <div class="col">
-                <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Location</p>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">
-                        {% with request.GET.city as city %}
-                            {% if not city %}All{% else %}{{ city }}{% endif %}
-                        {% endwith %}
-                    </button>
-                    <div class="dropdown-menu">
-                        <form action="{% url 'listings' %}" method="get" style="display:inline;">
-                            <input type="hidden" name="city" value="">
-                            <button type="submit" class="dropdown-item" style="border:none; background:none; padding:10px; margin:0; cursor:pointer;">
-                                All
-                            </button>
-                        </form>
+            </div><div class="col">
+            <form action="{% url 'listings' %}" method="get" style="display:inline;">
+                
+            
+                    <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Location</p>
+                    <select name="city" class="form-select" aria-label="Location" onchange="this.form.submit()" style="border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">
+                        <option value="" {% if not request.GET.city %}selected{% endif %}>All</option>
                         {% for city in cities %}
-                            <form action="{% url 'listings' %}" method="get" style="display:inline;">
-                                <input type="hidden" name="city" value="{{ city }}">
-                                <button type="submit" class="dropdown-item" style="border:none; background:none; padding:10px; margin:0; cursor:pointer;">
-                                    {{ city }}
-                                </button>
-                            </form>
+                        <option value="{{ city }}" {% if request.GET.city == city %}selected{% endif %}>{{ city }}</option>
                         {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Property Type</p>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="background: rgb(255,255,255);border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">
-                        {% with request.GET.property_type as property_type %}
-                            {% if not property_type %}All{% else %}{{ property_type }}{% endif %}
-                        {% endwith %}
-                    </button>
-                    <div class="dropdown-menu">
-                        <form action="{% url 'listings' %}" method="get" style="display:inline;">
-                            <input type="hidden" name="type" value="">
-                            <button type="submit" class="dropdown-item" style="border:none; background:none; padding:10px; margin:0; cursor:pointer;">
-                                All
-                            </button>
-                        </form>
+                    </select>
+                    <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Financing</p>
+                    <select name="financing" class="form-select" aria-label="Financing" onchange="this.form.submit()" style="border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">
+                        <option value="" {% if not request.GET.financing %}selected{% endif %}>All</option>
+                        {% for financing in financingTypes %}
+                        <option value="{{ financing }}" {% if request.GET.financing == financing %}selected{% endif %}>{{ financing }}</option>
+                        {% endfor %}
+                    </select>
+                    <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Property Type</p>
+                    <select name="property_type" class="form-select" aria-label="Property Type" onchange="this.form.submit()" style="border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">
+                        <option value="" {% if not request.GET.property_type %}selected{% endif %}>All</option>
                         {% for type in property_types %}
-                            <form action="{% url 'listings' %}" method="get" style="display:inline;">
-                                <input type="hidden" name="property_type" value="{{ type }}">
-                                <button type="submit" class="dropdown-item" style="border:none; background:none; padding:10px; margin:0; cursor:pointer;">
-                                    {{ type }}
-                                </button>
-                            </form>
+                        <option value="{{ type }}" {% if request.GET.property_type == type %}selected{% endif %}>{{ type }}</option>
                         {% endfor %}
-                    </div>
-                </div>
-            </div>
+                    </select>
+            </form>
+        </div>
             <div class="col">
                 <p style="margin: 0px; padding-right: 10px; padding-left: 10px;">Price</p>
                 <form action="{% url 'listings' %}" method="get">
-                    <input class="form-range" type="range" name="max_price" id="priceRange" step="1" min="{{ min_price }}" max="{{ max_price }}" value="{{ request.GET.max_price|default:max_price }}" oninput="document.getElementById('currentPrice').textContent = 'Current: ₱' + this.value">
-                    <div style="display: flex; justify-content: space-between;">
-                        <span>Min: ₱{{ min_price }}</span>
-                        <span id="currentPrice">Current: ₱{{ request.GET.max_price|default:max_price }}</span>
-                        <span>Max: ₱{{ max_price }}</span>
+                    <input class="form-range" type="range" name="max_price" id="priceRange" step="100" min="{{ min_price }}" max="{{ max_price }}" value="{{ request.GET.max_price|default:max_price }}" oninput="updateCurrentPrice(this)">
+                    <div>                        
+                        <span id="currentPrice">Max Price: ₱{{ request.GET.max_price|default:max_price }}</span>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Apply Filter</button>
                 </form>
@@ -114,11 +77,9 @@
             <div class="col">
                 <p style="margin: 0px; padding-right: 10px; padding-left: 10px;">Lot Area</p>
                 <form action="{% url 'listings' %}" method="get">
-                    <input class="form-range" type="range" name="max_lot_area" id="lotAreaRange" step="1" min="{{ min_lot_area }}" max="{{ max_lot_area }}" value="{{ request.GET.max_lot_area|default:max_lot_area }}" oninput="document.getElementById('currentLotArea').textContent = 'Current: ' + this.value + ' sq ft'">
+                    <input class="form-range" type="range" name="max_lot_area" id="lotAreaRange" step="1" min="{{ min_lot_area }}" max="{{ max_lot_area }}" value="{{ request.GET.max_lot_area|default:max_lot_area }}" oninput="document.getElementById('currentLotArea').textContent = 'Max Lot Area: ' + this.value + ' sqm'">
                     <div style="display: flex; justify-content: space-between;">
-                        <span>Min: {{ min_lot_area }} sq ft</span>
-                        <span id="currentLotArea">Current: {{ request.GET.max_lot_area|default:max_lot_area }} sq ft</span>
-                        <span>Max: {{ max_lot_area }} sq ft</span>
+                        <span id="currentLotArea">Max Lot Area: {{ request.GET.max_lot_area|default:max_lot_area }} sqm</span>
                     </div>
                     <button type="submit" class="btn btn-primary mt-3">Apply Filter</button>
                 </form>
@@ -136,7 +97,9 @@
                         <div class="card">
                             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px;" src="{{ house_listing.imagemodel_set.first.image.url }}">
                             <div class="card-body p-4">
-                                <p class="text-primary card-text mb-0" style="color: rgb(106,160,37);">₱{{house_listing.total_contract_price}}</p>
+                                {% with house_listing.total_contract_price|floatformat:0 as formatted_number %}
+                                <p class="text-primary card-text mb-0" style="color: rgb(106,160,37);">₱{{formatted_number|intcomma}}</p>
+                                {% endwith %}
                                 <h4 class="card-title">{{house_listing.house_name}}</h4>
                                 <p class="text-muted mb-0">{{house_listing.property_type}}</p>
                                 <p class="card-text">{{house_listing.address}}</p>
@@ -153,32 +116,30 @@
         </div>
         
     </div>
-    <footer class="text-center bg-dark">
-        <div class="container text-white py-4 py-lg-5">
-            <ul class="list-inline" style="font-family: Archivo, sans-serif;">
-                <li class="list-inline-item me-4"><a class="link-light" href="/">Home</a></li>
-                <li class="list-inline-item me-4"><a class="link-light" href="/about">About Us</a></li>
-                <li class="list-inline-item"><a class="link-light" href="/listings">See Listings</a></li>
-            </ul>
-            <ul class="list-inline">
-                <li class="list-inline-item me-4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook text-light">
-                    <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
-                </svg>
-                    www.facebook.com/pbrs</li>
-                </li>
-                <li class="list-inline-item">paulbalitarealtyservices@gmail.com</li>
-            </ul>
-            <p class="mb-0" style="font-family: Archivo, sans-serif;">Copyright © 2024 PBRS</p>
-        </div>
-    </footer>
+    {% include 'footer.html' %}
+    {% include 'modals.html' %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const PESO = new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'PHP',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0,
+        });
+
+        function updateCurrentPrice(elem){
+            document.getElementById('currentPrice').textContent = 'Current: ' + PESO.format(elem.value);
+        }
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const priceRange = document.getElementById('priceRange');
             const currentPrice = document.getElementById('currentPrice');
             const urlParams = new URLSearchParams(window.location.search);
             const maxPrice = urlParams.get('max_price') || priceRange.value;
-            currentPrice.textContent = 'Current: ₱' + maxPrice;
+
+            
+            currentPrice.textContent = 'Max Price: ' + PESO.format(maxPrice);
         });
     </script>
     <script>
@@ -187,7 +148,7 @@
             const currentLotArea = document.getElementById('currentLotArea');
             const urlParams = new URLSearchParams(window.location.search);
             const maxLotArea = urlParams.get('max_lot_area') || lotAreaRange.value;
-            currentLotArea.textContent = 'Current: ' + maxLotArea + ' sq ft';
+            currentLotArea.textContent = 'Max Lot Area: ' + maxLotArea + ' sqm';
         });
     </script>
 </body>
