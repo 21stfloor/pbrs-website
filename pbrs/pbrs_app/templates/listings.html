@@ -52,7 +52,9 @@
                     <select name="financing" class="form-select" aria-label="Financing" onchange="this.form.submit()" style="border-radius: 30px;border-width: 1px;border-color: rgb(210,210,210);color: rgb(0,0,0);">
                         <option value="" {% if not request.GET.financing %}selected{% endif %}>All</option>
                         {% for financing in financingTypes %}
-                        <option value="{{ financing }}" {% if request.GET.financing == financing %}selected{% endif %}>{{ financing }}</option>
+                            {% if financing and financing != "" %}
+                                <option value="{{ financing }}" {% if request.GET.financing == financing %}selected{% endif %}>{{ financing }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <p style="margin: 0px;padding-right: 10px;padding-left: 10px;">Property Type</p>
